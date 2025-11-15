@@ -206,4 +206,5 @@ export default function CandidateListPage() {
       </div>
     </div>
   )
+}
 
