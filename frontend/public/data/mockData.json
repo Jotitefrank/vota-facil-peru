@@ -1,0 +1,83 @@
+{
+  "calendario": [
+    {
+      "id": "evt1",
+      "tipo": "Primera Vuelta",
+      "fecha": "2026-04-01",
+      "descripcion": "Elecciones generales - primera vuelta"
+    },
+    {
+      "id": "evt2",
+      "tipo": "Segunda Vuelta",
+      "fecha": "2026-06-01",
+      "descripcion": "Segunda vuelta para cargos definidos"
+    }
+  ],
+  "agrupaciones": [
+    {
+      "id": "a1",
+      "nombre": "Partido A",
+      "planGobierno": "Plan de gobierno enfocado en educación y salud."
+    },
+    {
+      "id": "a2",
+      "nombre": "Partido B",
+      "planGobierno": "Plan con énfasis en economía y empleo."
+    }
+  ],
+  "candidatos": [
+    {
+      "id": "c1",
+      "nombre": "Juan Pérez",
+      "cargo": "Presidente",
+      "region": "Nacional",
+      "hojaVida": "Ingeniero con experiencia pública y privada.",
+      "foto": "/assets/images/candidates/c1.jpg"
+    },
+    {
+      "id": "c2",
+      "nombre": "María López",
+      "cargo": "Presidente",
+      "region": "Nacional",
+      "hojaVida": "Abogada y activista social.",
+      "foto": "/assets/images/candidates/c2.jpg"
+    }
+  ],
+  "electores": [
+    {
+      "id": "v1",
+      "tipo": "Ubicación de votación",
+      "contenido": "IEP San Martín - Av. Ejemplo 123, Lima"
+    },
+    {
+      "id": "v2",
+      "tipo": "Instrucciones",
+      "contenido": "Llevar DNI, llegar con tiempo y respetar las medidas de seguridad."
+    }
+  ],
+  "miembros": [
+    {
+      "id": "m1",
+      "tipo": "Instalación",
+      "contenido": "Presentarse a las 7:00 AM, revisar material y conformar mesa."
+    },
+    {
+      "id": "m2",
+      "tipo": "Sufragio",
+      "contenido": "Acompañar el proceso de votación y registrar incidencias si las hay."
+    }
+  ]
+  ,
+  "pollingPlaces": [
+    {
+      "id": "lp1",
+      "name": "IEP San Martín",
+      "address": "Av. Ejemplo 123, Lima",
+      "coords": { "lat": -12.04637, "lng": -77.04279 },
+      "mesas": [ { "mesa": "001", "members": [ { "name": "Ana", "role": "presidente" } ] } ]
+    }
+  ],
+  "news": [
+    { "id": "n1", "title": "Cobertura: inicio de campañas", "source": "El Comercio", "date": "2025-11-01", "url": "https://elcomercio.pe" }
+  ]
+}
