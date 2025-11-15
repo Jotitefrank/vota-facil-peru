@@ -35,3 +35,7 @@ build/
 ### Node.js ###
 node_modules/
 frontend/node_modules/
+
+### Logs ###
+*.log
+hs_err_pid*.log
