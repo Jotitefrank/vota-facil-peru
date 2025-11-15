@@ -3,15 +3,20 @@ import { Link } from 'react-router-dom'
 
 export default function Header() {
   return (
-    <header className="bg-white shadow mb-6">
-      <div className="container mx-auto p-4 flex items-center justify-between">
-        <h1 className="text-xl font-bold text-blue-600">Vota Fácil Perú</h1>
-        <nav className="space-x-4">
-          <Link to="/" className="text-gray-700 hover:text-blue-600">Inicio</Link>
-          <Link to="/candidatos" className="text-gray-700 hover:text-blue-600">Candidatos</Link>
-          <Link to="/votante" className="text-gray-700 hover:text-blue-600">Dónde voto</Link>
-          <Link to="/miembros" className="text-gray-700 hover:text-blue-600">Miembros de Mesa</Link>
+    <header className="bg-blue-900 text-white shadow-lg">
+      <div className="container mx-auto px-6 py-4 flex items-center justify-between">
+        <Link to="/" className="flex items-center gap-2 text-2xl font-bold">
+          <span className="text-orange-500">✓</span> ElectoralPlatforma
+        </Link>
+        <nav className="space-x-8 hidden md:flex">
+          <Link to="/" className="hover:text-orange-500 transition duration-300 font-medium">Calendario</Link>
+          <Link to="/candidatos" className="hover:text-orange-500 transition duration-300 font-medium">Candidatos</Link>
+          <Link to="/votante" className="hover:text-orange-500 transition duration-300 font-medium">Para Electores</Link>
+          <Link to="/miembros" className="hover:text-orange-500 transition duration-300 font-medium">Para Miembros de Mesa</Link>
         </nav>
+        <button className="bg-white text-blue-900 px-6 py-2 rounded font-semibold hover:bg-gray-100 transition duration-300">
+          Iniciar sesión
+        </button>
       </div>
     </header>
   )
