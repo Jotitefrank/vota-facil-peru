@@ -9,7 +9,7 @@ export default function Header() {
           <span className="text-orange-500">✓</span> ElectoralPlatforma
         </Link>
         <nav className="space-x-8 hidden md:flex">
-          <Link to="/" className="hover:text-orange-500 transition duration-300 font-medium">Calendario</Link>
+          <Link to="/calendario" className="hover:text-orange-500 transition duration-300 font-medium">Calendario</Link>
           <Link to="/candidatos" className="hover:text-orange-500 transition duration-300 font-medium">Candidatos</Link>
           <Link to="/votante" className="hover:text-orange-500 transition duration-300 font-medium">Para Electores</Link>
           <Link to="/miembros" className="hover:text-orange-500 transition duration-300 font-medium">Para Miembros de Mesa</Link>
