@@ -52,6 +52,7 @@ Antes de ejecutar el proyecto, asegúrate de tener instalados:
    ```
    cd frontend
    npm install
+   npm run dev
    ```
 
 ## Ejecución
