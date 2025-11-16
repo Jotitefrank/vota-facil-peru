@@ -1,22 +1,25 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-export default function MyPollingPlace() {
+export default function MyPollingPlace({ electores }) {
   const navigate = useNavigate()
   const [activeTab, setActiveTab] = useState('ubicacion')
   const [dni, setDni] = useState('')
   const [searchResult, setSearchResult] = useState(null)
 
   const handleSearch = () => {
-    // Simulamos una búsqueda
-    if (dni.trim()) {
+    // Buscamos en los datos de electores
+    const ubicacion = electores.find(e => e.tipo === 'Ubicación de votación')
+    if (ubicacion && dni.trim()) {
       setSearchResult({
-        centro: 'Escuela Primaria Central',
-        direccion: 'Avenida Principal 123',
-        mesa: '005',
-        salon: 'Salón 3',
+        centro: ubicacion.contenido.split(',')[0],
+        direccion: ubicacion.contenido.split(',')[1] || 'Dirección no especificada',
+        mesa: '001',
+        salon: 'Aula 201',
         hora: '8:00 AM - 5:00 PM',
-        telefono: '+51 1 2345-6789'
+        telefono: '+51 1 2345-6789',
+        lat: ubicacion.latitud,
+        lng: ubicacion.longitud
       })
     }
   }
@@ -89,7 +92,9 @@ export default function MyPollingPlace() {
 
   const tabs = [
     { id: 'ubicacion', label: '📍 Ubicación', icon: '📍' },
+    { id: 'instrucciones', label: '📝 Instrucciones', icon: '📝' },
     { id: 'seguridad', label: '🛡️ Seguridad', icon: '🛡️' },
+    { id: 'marco', label: '⚖️ Marco Legal', icon: '⚖️' },
     { id: 'tutorial', label: '📚 Tutorial', icon: '📚' }
   ]
 
@@ -197,16 +202,45 @@ export default function MyPollingPlace() {
           </div>
         )}
 
+        {/* TAB: Instrucciones */}
+        {activeTab === 'instrucciones' && (
+          <div className="bg-white rounded-lg shadow-md p-8">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">Instrucciones para Votar</h2>
+            {electores.filter(e => e.tipo === 'Instrucciones cédula').map((info, index) => (
+              <div key={index} className="prose max-w-none">
+                <p className="text-gray-700 leading-relaxed">{info.contenido}</p>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* TAB: Marco Legal */}
+        {activeTab === 'marco' && (
+          <div className="bg-white rounded-lg shadow-md p-8">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">Marco Legal</h2>
+            {electores.filter(e => e.tipo === 'Marco legal').map((info, index) => (
+              <div key={index} className="prose max-w-none">
+                <p className="text-gray-700 leading-relaxed">{info.contenido}</p>
+              </div>
+            ))}
+          </div>
+        )}
+
         {/* TAB: Seguridad */}
         {activeTab === 'seguridad' && (
-          <div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-8">Recomendaciones de Seguridad</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="bg-white rounded-lg shadow-md p-8">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">Recomendaciones de Seguridad</h2>
+            {electores.filter(e => e.tipo === 'Recomendaciones seguridad').map((info, index) => (
+              <div key={index} className="prose max-w-none">
+                <p className="text-gray-700 leading-relaxed">{info.contenido}</p>
+              </div>
+            ))}
+            <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
               {securityTips.map((tip, index) => (
-                <div key={index} className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition">
-                  <div className="text-4xl mb-4">{tip.icon}</div>
+                <div key={index} className="bg-gray-50 rounded-lg p-4 hover:bg-gray-100 transition">
+                  <div className="text-2xl mb-2">{tip.icon}</div>
                   <h3 className="text-lg font-bold text-gray-900 mb-2">{tip.title}</h3>
-                  <p className="text-gray-600">{tip.description}</p>
+                  <p className="text-gray-600 text-sm">{tip.description}</p>
                 </div>
               ))}
             </div>

@@ -1,53 +1,16 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
-export default function CalendarDetailPage() {
+export default function CalendarDetailPage({ calendario }) {
   const navigate = useNavigate()
 
-  const calendarEvents = [
-    {
-      id: 1,
-      date: '15 de Enero 2026',
-      title: 'Registro de candidatos',
-      description: 'Cierre del periodo de registro de candidatos',
-      icon: '📅'
-    },
-    {
-      id: 2,
-      date: '1 de Febrero 2026',
-      title: 'Publicación de planchas',
-      description: 'Se publican oficialmente todas las planchas presidenciales',
-      icon: '📋'
-    },
-    {
-      id: 3,
-      date: '15 de Marzo 2026',
-      title: 'Campaña electoral',
-      description: 'Inicio oficial de la campaña electoral',
-      icon: '📢'
-    },
-    {
-      id: 4,
-      date: '20 de Abril 2026',
-      title: 'Cierre de campaña',
-      description: 'Último día de actividades de campaña',
-      icon: '🎬'
-    },
-    {
-      id: 5,
-      date: '25 de Abril 2026',
-      title: 'Jornada de reflexión',
-      description: 'Día de silencio electoral antes de la votación',
-      icon: '🤐'
-    },
-    {
-      id: 6,
-      date: '27 de Abril 2026',
-      title: 'Elecciones Generales',
-      description: 'Día de votación - Proceso electoral 2026',
-      icon: '🗳️'
-    }
-  ]
+  const calendarEvents = calendario.map(event => ({
+    id: event.id,
+    date: event.fecha,
+    title: event.tipo,
+    description: event.descripcion,
+    icon: event.tipo === 'Elecciones Generales' ? '🗳️' : event.tipo === 'Proceso Electoral' ? '📅' : '👥'
+  })) || []
 
   return (
     <div className="min-h-screen bg-gray-50">

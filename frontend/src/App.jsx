@@ -9,6 +9,7 @@ import CandidateDetail from './pages/Candidates/CandidateDetail'
 import MyPollingPlace from './pages/VoterInfo/MyPollingPlace'
 import MemberTraining from './pages/TableMember/MemberTraining'
 import CalendarDetailPage from './pages/Calendar/CalendarDetailPage'
+import ElectoralInfoPage from './pages/Electoral/ElectoralInfoPage'
 import { fetchAllData } from './services/dataService'
 
 function App() {
@@ -44,11 +45,12 @@ function App() {
         <main className="container mx-auto p-4 flex-1">
           <Routes>
             <Route path="/" element={<DashboardPage calendario={calendario} candidatos={candidatos} news={[]} />} />
-            <Route path="/calendario" element={<CalendarDetailPage />} />
-            <Route path="/candidatos" element={<CandidateListPage />} />
+            <Route path="/calendario" element={<CalendarDetailPage calendario={calendario} />} />
+            <Route path="/candidatos" element={<CandidateListPage candidatos={candidatos} agrupaciones={agrupaciones} />} />
             <Route path="/candidatos/:id" element={<CandidateDetail />} />
-            <Route path="/votante" element={<MyPollingPlace />} />
-            <Route path="/miembros" element={<MemberTraining />} />
+            <Route path="/votante" element={<MyPollingPlace electores={electores} />} />
+            <Route path="/miembros" element={<MemberTraining miembros={miembros} />} />
+            <Route path="/electoral" element={<ElectoralInfoPage />} />
           </Routes>
         </main>
         <Footer />
